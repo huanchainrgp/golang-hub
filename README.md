@@ -34,7 +34,7 @@ golang-hub/
 
 ### Prerequisites
 
-- Go 1.16 or higher
+- Go 1.16 or higher (tested with Go 1.24.9)
 
 ### Installation
 

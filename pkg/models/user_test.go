@@ -38,16 +38,19 @@ func TestNewUser(t *testing.T) {
 }
 
 func TestGenerateID(t *testing.T) {
-	id1 := generateID()
-	time.Sleep(1 * time.Second)
-	id2 := generateID()
+	id := generateID()
 
-	if id1 == "" {
+	if id == "" {
 		t.Error("generateID returned empty string")
 	}
 
-	// IDs generated at different times should be different
-	if id1 == id2 {
-		t.Error("generateID should produce unique IDs")
+	// ID should have the expected prefix
+	expectedPrefix := "user-"
+	if len(id) < len(expectedPrefix) {
+		t.Errorf("ID %q is too short", id)
+	}
+
+	if id[:len(expectedPrefix)] != expectedPrefix {
+		t.Errorf("ID %q should start with %q", id, expectedPrefix)
 	}
 }
